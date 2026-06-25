@@ -42,15 +42,10 @@ def vista_detalle(page: ft.Page, pelicula: dict):
     def abrir_trailer(e):
         query = urllib.parse.quote(f"{titulo} {año} official trailer")
         url = f"https://www.youtube.com/results?search_query={query}"
-        # En web desplegada (Railway tiene PORT), usar launch_url que abre en el cliente
-        # En desktop local sin PORT, usar webbrowser como fallback
-        if os.environ.get("PORT"):
-            page.launch_url(url, web_window_name="_blank")
-        else:
-            try:
-                page.launch_url(url, web_window_name="_blank")
-            except Exception:
-                webbrowser.open(url)
+        try:
+            page.launch_url(url, web_popup_window_name="_blank")
+        except Exception:
+            webbrowser.open(url)
 
     # ── Build ──────────────────────────────────────────────────────────────────
 
