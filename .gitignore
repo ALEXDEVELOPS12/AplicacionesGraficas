@@ -1,0 +1,23 @@
+# Variables de entorno (credenciales)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+.venv/
+*.log
+
+# Caché OMDB local
+.omdb_cache.json
+
+# Build outputs
+build/
+dist/
+*.exe
+*.apk
+
+# IDEs
+.vscode/
+.idea/

@@ -1,0 +1,5 @@
+flet==0.85.3
+psycopg2-binary==2.9.12
+bcrypt==5.0.0
+requests==2.34.2
+python-dotenv==1.2.2
