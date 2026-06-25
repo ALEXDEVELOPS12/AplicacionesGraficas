@@ -111,6 +111,7 @@ def vista_login(page: ft.Page):
             from database import login_usuario, inicializar_bd
             inicializar_bd()
             resultado = login_usuario(campo_email.value or "", campo_contrasena.value or "")
+            print(f"Login resultado: {resultado}")  # debug
             if resultado["ok"]:
                 page.on_resize = None
                 page.clean()
