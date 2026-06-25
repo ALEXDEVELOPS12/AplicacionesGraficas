@@ -178,7 +178,6 @@ def vista_detalle(page: ft.Page, pelicula: dict):
             border_radius=10,
             ink=True,
             url=trailer_url,
-            url_target="_blank",
             padding=ft.Padding.symmetric(horizontal=24, vertical=12),
             content=ft.Row(
                 [
