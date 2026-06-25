@@ -43,11 +43,7 @@ def vista_detalle(page: ft.Page, pelicula: dict):
         query = urllib.parse.quote(f"{titulo} {año} official trailer")
         url = f"https://www.youtube.com/results?search_query={query}"
         try:
-            page.launch_url(
-                url,
-                web_popup_window_name="_blank",
-                web_popup_window=True,
-            )
+            page.launch_url(url)
         except Exception:
             webbrowser.open(url)
 
