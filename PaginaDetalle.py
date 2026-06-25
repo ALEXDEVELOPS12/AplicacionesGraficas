@@ -33,24 +33,13 @@ def vista_detalle(page: ft.Page, pelicula: dict):
 
     # ── Navegación ─────────────────────────────────────────────────────────────
 
+    # ── Navegación ─────────────────────────────────────────────────────────────
+
     def ir_a_inicio(e):
         from PaginaInicio import vista_inicio
         page.on_resize = None
         page.clean()
         vista_inicio(page)
-
-    # UrlLauncher para abrir trailer en web
-    url_launcher = ft.UrlLauncher()
-    page.overlay.append(url_launcher)
-    page.update()
-
-    def abrir_trailer(e):
-        query = urllib.parse.quote(f"{titulo} {año} official trailer")
-        url = f"https://www.youtube.com/results?search_query={query}"
-        try:
-            url_launcher.launch_url(url, web_only_window_name="_blank")
-        except Exception:
-            webbrowser.open(url)
 
     # ── Build ──────────────────────────────────────────────────────────────────
 
@@ -181,11 +170,15 @@ def vista_detalle(page: ft.Page, pelicula: dict):
         )
 
         # ── Botón trailer ──────────────────────────────────────────────────────
+        trailer_query = urllib.parse.quote(f"{titulo} {año} official trailer")
+        trailer_url   = f"https://www.youtube.com/results?search_query={trailer_query}"
+
         btn_trailer = ft.Container(
             bgcolor=ft.Colors.RED_700,
             border_radius=10,
             ink=True,
-            on_click=abrir_trailer,
+            url=trailer_url,
+            url_target="_blank",
             padding=ft.Padding.symmetric(horizontal=24, vertical=12),
             content=ft.Row(
                 [
