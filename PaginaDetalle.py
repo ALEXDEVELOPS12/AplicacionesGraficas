@@ -39,11 +39,16 @@ def vista_detalle(page: ft.Page, pelicula: dict):
         page.clean()
         vista_inicio(page)
 
+    # UrlLauncher para abrir trailer en web
+    url_launcher = ft.UrlLauncher()
+    page.overlay.append(url_launcher)
+    page.update()
+
     def abrir_trailer(e):
         query = urllib.parse.quote(f"{titulo} {año} official trailer")
         url = f"https://www.youtube.com/results?search_query={query}"
         try:
-            page.launch_url(url)
+            url_launcher.launch_url(url, web_only_window_name="_blank")
         except Exception:
             webbrowser.open(url)
 
